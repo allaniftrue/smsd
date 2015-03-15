@@ -37,6 +37,7 @@
 						<li><a href="/">Home</a></li>
 					@else
 						<li><a href="{{ url('/') }}">Compose</a></li>
+						<li><a href="{{ url('inbox') }}">Inbox</a></li>
 						<li><a href="{{ url('contacts') }}">Contacts</a></li>
 					@endif
 				</ul>

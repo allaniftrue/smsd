@@ -12,6 +12,8 @@
 */
 
 // Route::get('/', 'WelcomeController@index');
+//
+Route::get('faker', 'InboxController@faker');
 
 Route::get('/', 'HomeController@index');
 Route::get('home/inbox', 'HomeController@getInbox');
@@ -23,6 +25,8 @@ Route::post('contacts/store', 'ContactController@store');
 Route::get('contacts/search/{kw?}', 'ContactController@search');
 Route::get('contacts/send/{phoneNumber}', 'ContactController@prepare');
 Route::post('contacts/destroy', 'ContactController@destroy');
+
+Route::get('inbox', 'InboxController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

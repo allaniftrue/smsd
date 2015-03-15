@@ -21,9 +21,10 @@
             <select id="select-to" class="contacts" placeholder="Pick some people..."></select>
         </div>
         <div class="control-group">
-            <label for="select-to">Message: <span id="charNum" class="label label-info"></span></label>
+            <label for="select-to">Message:</label>
             <textarea name="message" id="message" rows="5" class="col-md-12 form-control" placeholder="Write your 150 characters message here..."></textarea>
         </div>
+        <span id="charNum" class="label label-danger pull-right"></span>
         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
         <input type="hidden" name="number" id="number" value="{{ $numberExist or '' }}">
         <button type="submit" class=" btn btn-primary margin-top-20" id="btn-send" data-loading-text="Sending text message...">
