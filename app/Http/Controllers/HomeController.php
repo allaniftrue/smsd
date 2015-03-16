@@ -39,12 +39,14 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
+		$data['active'] = 'home';
 		$data['existingContacts'] = Contact::all();
 		return view('home', $data);
 	}
 
 	public function sendMessage()
 	{
+		$data['active'] = 'home';
 		$data['existingContacts'] = Contact::all();
 		$validator = Validator::make(
 		    [
@@ -83,6 +85,7 @@ class HomeController extends Controller {
 	 */
 	public function getInbox()
 	{
+		$data['active'] = 'home';
 		$data['result'] =  DB::select( DB::raw("
 													SELECT * FROM contact
 													RIGHT JOIN inbox ON inbox.number = contact.number

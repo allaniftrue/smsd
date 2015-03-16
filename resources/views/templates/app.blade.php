@@ -36,9 +36,10 @@
 					@if (Auth::guest())
 						<li><a href="/">Home</a></li>
 					@else
-						<li><a href="{{ url('/') }}">Compose</a></li>
-						<li><a href="{{ url('inbox') }}">Inbox</a></li>
-						<li><a href="{{ url('contacts') }}">Contacts</a></li>
+						<li {{ $active == 'home' ? 'class=active' : '' }}><a href="{{ url('/') }}">Compose</a></li>
+						<li {{ $active == 'inbox' ? 'class=active' : '' }}><a href="{{ url('inbox') }}">Inbox</a></li>
+						<li {{ $active == 'outbox' ? 'class=active' : '' }}><a href="{{ url('outbox') }}">Outbox</a></li>
+						<li {{ $active == 'contact' ? 'class=active' : '' }}><a href="{{ url('contacts') }}">Contacts</a></li>
 					@endif
 				</ul>
 

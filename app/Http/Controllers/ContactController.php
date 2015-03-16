@@ -9,10 +9,15 @@ use Illuminate\Support\Facades\Input;
 
 class ContactController extends Controller {
 
+    public function __construct()
+    {
+
+    }
+
     public function index()
     {
         $data['contacts'] = DB::table('contact')->orderBy('name', 'asc')->paginate(30);
-
+        $data['active'] = 'contact';
         return view('contacts.index', $data);
     }
 
@@ -23,6 +28,7 @@ class ContactController extends Controller {
      */
     public function search($kw=NULL)
     {
+        $data['active'] = 'contact';
         $data['contacts'] = DB::table('contact')->where('name', 'like', '%'.Input::get('kw').'%')->orWhere('number', 'like', '%'.Input::get('kw').'%')->paginate(30);
 
         return view('contacts.index', $data);
@@ -55,7 +61,7 @@ class ContactController extends Controller {
                 return view('home', $data)->withErrors($validator->errors());
             }
         }
-
+        $data['active'] = 'contact';
         return view('home', $data);
 
     }
@@ -95,7 +101,7 @@ class ContactController extends Controller {
             } else {
                 $message = '<div class="alert alert-danger" role="alert"><strong>Oh snap!</strong> Unable to save contact number.</div>';
             }
-
+            $data['active'] = 'contact';
             return redirect('contacts')->with('message', $message);
         }
     }

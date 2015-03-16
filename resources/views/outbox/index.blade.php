@@ -7,13 +7,13 @@
             <th>Message</th>
             <th class="hidden-xs">Date</th>
         </tr>
-        @foreach($inbox as $cont)
+        @foreach($outbox as $cont)
             <tr>
                 <td class="hidden-xs">
-                    {{ $cont->name or $cont->inboxNumber }}
+                    {{ $cont->name or $cont->outboxNumber }}
                 </td>
                 <td>
-                    <span class="visible-xs"><strong>{{ $cont->name or $cont->inboxNumber }}</strong><br></span>
+                    <span class="visible-xs"><strong>{{ $cont->name or $cont->outboxNumber }}</strong><br></span>
                     <span class="visible-xs"><small>{{ date('m-d-y g:i a', strtotime($cont->insertdate)) }}</small><br></span>
                     {{ $cont->text }}
                 </td>
@@ -22,5 +22,5 @@
         @endforeach
     </table>
 
-    {!! $inbox->render() !!}
+    {!! $outbox->render() !!}
 @stop

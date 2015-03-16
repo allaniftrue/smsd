@@ -17,25 +17,13 @@ class InboxController extends Controller {
      */
 	public function index()
     {
-        $data['inbox'] = Inbox::orderBy('insertdate', 'desc')->paginate(30);
 
+        $data['inbox'] = DB::table('contact')
+                                                ->select('inbox.number as inboxNumber','inbox.smsdate','inbox.insertdate','inbox.text','contact.name','contact.number as contactNumber')
+                                                ->rightJoin('inbox', 'inbox.number', '=', 'contact.number')
+                                                ->paginate(30);
+        $data['active'] = 'inbox';
         return view('inbox.index', $data);
-    }
-
-    public function faker()
-    {
-        $faker = Faker\Factory::create();
-        $c = new Contact;
-        $c->user_id = Auth:id();
-
-        for($x=0; $x<100; $x++) {
-
-            $c->name = $faker->name;
-            $c->number = $faker->numerify("###########");
-
-            $c->save();
-        }
-        return 'end';
     }
 
 }
